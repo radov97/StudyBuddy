@@ -1,3 +1,10 @@
+<?php
+// Mustache PHP version 2.13.0
+require_once 'mustache.php-2.13.0/src/Mustache/Autoloader.php';
+Mustache_Autoloader::register();
+$mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <!--COMP702, Andrei Radovici, Summer 2021-->
