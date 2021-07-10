@@ -4,9 +4,7 @@ function getTemplate(string $path): string
 {
     ob_start();
     require_once $path;
-    $template = ob_get_clean();
-    ob_end_clean();
-    return $template;
+    return ob_get_clean();
 }
 
 ?>

@@ -10,6 +10,5 @@ $template = getTemplate('mustacheTemplates/index.mst');
 <?php require_once 'styles/index.html'; ?>
 <!-- Template -->
 <?= $mustache->render($template, ['planet' => 'World!']);  ?>
-
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
