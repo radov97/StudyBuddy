@@ -18,7 +18,7 @@
 
     <div class="w-25 m-auto p-2 mb-3">
         <div class="w-100 text-center h5">
-            <a href="login.php">
+            <a href="forgotpassword.php">
                 Forgot your password?
             </a>
         </div>
