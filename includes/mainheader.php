@@ -3,7 +3,19 @@
 require_once 'mustache.php-2.13.0/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 $mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
+
+$_SESSION['user_logged'] = true; // remove this later
+// Determine navbar
+if (isset($_SESSION['user_logged'])) {
+    $navbar = getTemplate('mustacheTemplates/navbarlogged.mst');
+} else {
+    $navbar = getTemplate('mustacheTemplates/navbarsignout.mst');
+}
+
 ?>
+<!-- Style -->
+<?php require_once 'styles/styles.html'; ?>
+<?php require_once 'styles/navbar.html'; ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,10 +28,14 @@ $mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
         <meta name="description" content="Web-Based Platform Project for COMP702">
         <meta name="keywords" content="COMP702,StudyBuddy">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>Study Buddy</title>
+        <title>StudBud Pairing</title>
         <!-- Bootstrap 5 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <!-- Bootstrap Icons -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" integrity="sha384-tKLJeE1ALTUwtXlaGjJYM3sejfssWdAaWR2s97axw4xkiAdMzQjtOjgcyw0Y50KU" crossorigin="anonymous">
         <!-- jQuery 3.6.0 minified version -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body>
+    <!-- Render navbar -->
+    <?= $mustache->render($navbar, []); ?>
