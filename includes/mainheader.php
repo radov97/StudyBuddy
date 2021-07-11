@@ -4,7 +4,7 @@ require_once 'mustache.php-2.13.0/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 $mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
 
-$_SESSION['user_logged'] = true; // remove this later
+// $_SESSION['user_logged'] = true; // remove this later
 // Determine navbar
 if (isset($_SESSION['user_logged'])) {
     $navbar = getTemplate('mustacheTemplates/navbarlogged.mst');
@@ -37,5 +37,6 @@ if (isset($_SESSION['user_logged'])) {
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     </head>
     <body>
+        <main class="site-content">
     <!-- Render navbar -->
     <?= $mustache->render($navbar, []); ?>

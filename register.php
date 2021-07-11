@@ -1,14 +1,14 @@
 <?php
 require_once 'includes/globalfunctions.php';
-$template = getTemplate('mustacheTemplates/index.mst');
+$register = getTemplate('mustacheTemplates/register.mst');
 
 ?>
 
 <!-- Header -->
 <?php require_once 'includes/mainheader.php'; ?>
 <!-- Style -->
-<?php require_once 'styles/index.html'; ?>
+<?php require_once 'styles/login.html'; ?>
 <!-- Template -->
-<?= $mustache->render($template, ['planet' => 'World!']);  ?>
+<?= $mustache->render($register, []);  ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

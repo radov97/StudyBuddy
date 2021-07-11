@@ -6,20 +6,22 @@
         alt="StudBud Logo" 
     >
     <div class="d-block mr-0 ml-auto">
-        <button 
+        <a 
             class="btn btn-info btn-lg shadow-none"
-            name="sign_in"
+            type="button"
+            href="register.php"
         >
             <i class="bi bi-person-plus"></i>
             Sign in
-        </button>
-        <button 
+        </a>
+        <a 
             class="btn btn-info btn-lg shadow-none"
-            name="log_in"
+            type="button"
+            href="login.php"
         >
             <i class="bi bi-door-open"></i>
             Log in
-        </button>
+        </a>
     </div>
   </div>
 </nav>
