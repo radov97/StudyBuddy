@@ -3,15 +3,23 @@
 require_once 'mustache.php-2.13.0/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 $mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
-
-// $_SESSION['user_logged'] = true; // remove this later
 // Determine navbar
 if (isset($_SESSION['user_logged'])) {
     $navbar = getTemplate('mustacheTemplates/navbarlogged.mst');
 } else {
     $navbar = getTemplate('mustacheTemplates/navbarsignout.mst');
 }
-
+// Determine alert message
+if (isset($successMessage)) {
+    $alertMessage = getTemplate('mustacheTemplates/alertmessage.mst');
+    $alertMessageData = ['type' => 'alert-success', 'message' => $successMessage];
+    $soundSrc = 'resources/sounds/success.ogg';
+}
+if (isset($errorMessage)) {
+    $alertMessage = getTemplate('mustacheTemplates/alertmessage.mst');
+    $alertMessageData = ['type' => 'alert-danger', 'message' => $errorMessage];
+    $soundSrc = 'resources/sounds/error.ogg';
+}
 ?>
 <!-- Style -->
 <?php require_once 'styles/styles.html'; ?>
@@ -29,6 +37,8 @@ if (isset($_SESSION['user_logged'])) {
         <meta name="keywords" content="COMP702,StudyBuddy">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <title>StudBud Pairing</title>
+        <!-- Website Favicon -->
+        <link rel="icon" type="image/png" href="resources/logo/logo_small_icon_only.png">
         <!-- Bootstrap 5 -->
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
         <!-- Bootstrap Icons -->
@@ -40,3 +50,9 @@ if (isset($_SESSION['user_logged'])) {
         <main class="site-content">
     <!-- Render navbar -->
     <?= $mustache->render($navbar, []); ?>
+    <!-- Render alert message -->
+    <?php
+        if (isset($alertMessage)) {
+            echo $mustache->render($alertMessage, $alertMessageData);
+        }
+    ?>
