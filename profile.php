@@ -1,17 +1,19 @@
 <?php
 require_once 'includes/globalfunctions.php';
-
+// Determine alerts
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
         case "new_user":
             $successMessage = 'Your account has been successfully created.';
+            break;
+        case "login":
+            $successMessage = "Welcome back. Let's find a buddy today.";
             break;
     default:
         break;
     }
 }
 
-// debug($_SESSION);
 ?>
 
 <!-- Header -->

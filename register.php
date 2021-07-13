@@ -35,7 +35,6 @@ if (isset($_POST['register_user'])) {
             $errorMessage = 'Something went wrong. Could not create your account.';
             break;
         }
-        // Need to fix this session bug
         $_SESSION['user_logged']['email'] = $safeEmail;
         redirectTo('profile.php?success=new_user');
     } while (0);
@@ -48,6 +47,6 @@ if (isset($_POST['register_user'])) {
 <!-- Style -->
 <?php require_once 'styles/login.html'; ?>
 <!-- Template -->
-<?= $mustache->render($register, ['email'=> isset($_POST['email']) ? $_POST['email'] : '']);  ?>
+<?= $mustache->render($register, ['email'=> isset($_POST['email']) ? $_POST['email'] : '']); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

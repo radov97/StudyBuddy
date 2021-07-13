@@ -6,6 +6,7 @@ $dbUsername = 'sgaradov';
 $dbPassword = 'cristi132';
 $dbName = 'sgaradov';
 */
+session_start();
 $dbServeName = 'localhost';
 $dbUsername = 'root';
 $dbPassword = '';
