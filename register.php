@@ -21,10 +21,6 @@ if (isset($_POST['register_user'])) {
         // Validate password
         if (!validateInput($safePassword, 'password')) {
             $errorMessage = 'Your password does not match the requirements.';
-            // May contain letter and numbers <br/>
-            // Must contain at least 1 number and 1 letter <br/>
-            // May contain any of these characters: !@#$% <br/>
-            // Must be 8-12 characters <br/>
             break;
         }
         if ($safePassword !== $confirmPassword) {

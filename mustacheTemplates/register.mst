@@ -18,6 +18,14 @@
             <div class="form-text text-light">We'll never share your email.</div>
         </div>
         <div class="mb-3">
+            <button
+                type="button"
+                class="btn btn-lg btn-outline-light rounded-circle p-0 m-1 shadow-none"
+                data-bs-toggle="modal" 
+                data-bs-target="#password-tips"
+            >
+                <i class="bi bi-question-circle"></i>
+            </button>
             <label class="form-label">Password</label>
             <input type="password" class="form-control shadow-none" name="password" required>
         </div>
@@ -35,4 +43,25 @@
             </a>
         </div>
     </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="password-tips" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-light">
+        <h5 class="modal-title"><i class="bi bi-file-earmark-lock"></i> Password</h5>
+      </div>
+      <div class="modal-body">
+        <ul>
+            <li>May contain letter and numbers</li>
+            <li>Must contain at least 1 number and 1 letter</li>
+            <li>May contain any of these characters: !@#$%</li>
+            <li> Must be 8-20 characters</li>
+        </ul>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button type="button" class="btn btn-outline-light w-100 shadow-none" data-bs-dismiss="modal">Understood</button>
+      </div>
+    </div>
+  </div>
 </div>
