@@ -4,6 +4,9 @@ $login = getTemplate('mustacheTemplates/login.mst');
 // Determine alerts
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
+        case "new_user":
+            $successMessage = 'Your account has been successfully created. Please confirm on your email address.';
+            break;
         case "logout":
             $successMessage = 'Successfully logout. See you next time.';
             break;

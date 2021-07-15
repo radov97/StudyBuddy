@@ -2,6 +2,9 @@
 require_once 'includes/globalfunctions.php';
 $register = getTemplate('mustacheTemplates/register.mst');
 
+// $mail_sent = mail('anasdasdci@eden.co.uk', 'Test Subject 2', 'Hello There!', 'From: andreirdv97@gmail.com');
+// echo 'mail_sent = ' . $mail_sent;
+
 if (isset($_POST['register_user'])) {
     do {
         // Check if user already exists
@@ -32,7 +35,7 @@ if (isset($_POST['register_user'])) {
             break;
         }
         $_SESSION['user_logged']['email'] = $safeEmail;
-        redirectTo('profile.php?success=new_user');
+        redirectTo('login.php?success=new_user');
     } while (0);
 }
 

@@ -49,6 +49,7 @@ function checkUserAccount(string $email): array
     return [
         'email' => $row['email'],
         'password' => $row['password'],
+        'verified' => $row['verified']
     ];
 }
 // Codebase functions
