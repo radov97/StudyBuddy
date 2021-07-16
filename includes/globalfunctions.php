@@ -1,5 +1,8 @@
 <?php
 require_once 'includes/dbh.inc.php';
+// Global variables
+define("BASE_DOMAIN_URL", "http://localhost/StudyBuddy/");
+define("BASE_DOMAIN_EMAIL", "andreirdv97@gmail.com");
 // Database interaction functions
 
 // Used to insert strings securely into DB
@@ -10,16 +13,34 @@ function dbEscapeString(string $string): string
 }
 
 // Used to register new user
-function registerUser(string $email, string $password): bool
+function registerUser(string $email, string $password, string $passcode): bool
 {
     global $conn;
     $insert = 
-        "INSERT INTO user_accounts (email, password) 
+        "INSERT INTO user_accounts (email, password, verified, url_passcode) 
             VALUES (
                '".dbEscapeString($email)."',
-               '".dbEscapeString($password)."'
+               '".dbEscapeString($password)."',
+               'n', 
+               '".dbEscapeString($passcode)."'
             )";
     $result = mysqli_query($conn, $insert);
+    if (!$result) {
+
+        return false;
+    }
+
+    return true;
+}
+
+function verifyUserAccount(string $email, string $passcode): bool
+{
+    global $conn;
+    $update = 
+        "UPDATE user_accounts SET verified = 'y' 
+            WHERE email = '" . dbEscapeString($email) . "' 
+            AND url_passcode = '" . dbEscapeString($passcode) . "'";
+    $result = mysqli_query($conn, $update);
     if (!$result) {
 
         return false;
@@ -49,7 +70,8 @@ function checkUserAccount(string $email): array
     return [
         'email' => $row['email'],
         'password' => $row['password'],
-        'verified' => $row['verified']
+        'verified' => $row['verified'],
+        'url_passcode' => $row['url_passcode']
     ];
 }
 // Codebase functions
@@ -98,6 +120,16 @@ function trimInputSides(string $input): string
     $input = rtrim($input, " ");
     return $input;
 }
-
+// Used to generate a random string
+function generateRandomString(int $length = 10): string 
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return (string) $randomString;
+}
 
 ?>

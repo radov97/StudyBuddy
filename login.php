@@ -5,10 +5,35 @@ $login = getTemplate('mustacheTemplates/login.mst');
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
         case "new_user":
-            $successMessage = 'Your account has been successfully created. Please confirm on your email address.';
+            $successMessage = 'Your account has been successfully created. Please confirm your email address.';
+            unset($errorMessage);
+            break;
+        case "verify":
+            $isUserValid = checkUserAccount($_GET['email']);
+            do {
+                if (empty($isUserValid) || $isUserValid['url_passcode'] !== $_GET['passcode']) {
+                    $errorMessage = 'This verification link is not valid. Please request a new one.';
+                    unset($successMessage);
+                    break;
+                }
+                if ($isUserValid['verified'] === 'y') {
+                    $successMessage = 'This account is already verified. You can login.';
+                    unset($errorMessage);
+                    break;
+                }
+                // Verify account
+                if (!verifyUserAccount($_GET['email'], $_GET['passcode'])) {
+                    $errorMessage = 'Could not verify your account. Please request a new verification link and try again.';
+                    unset($successMessage);
+                    break;
+                }
+                $successMessage = 'Your account has successfully been verified. You can login.';
+                unset($errorMessage);
+            } while(0);
             break;
         case "logout":
             $successMessage = 'Successfully logout. See you next time.';
+            unset($errorMessage);
             break;
     default:
         break;
@@ -24,18 +49,32 @@ if (isset($_POST['login_user'])) {
         // Invalid user
         if (empty($isUserValid)) {
             $errorMessage = 'Invalid email address.';
+            unset($successMessage);
             break;
         }
         //  Wrong password
         if ($isUserValid['password'] !== $safePassword) {
             $errorMessage = 'Wrong password.';
+            unset($successMessage);
+            break;
+        }
+        // Account not verified yet
+        if ($isUserValid['verified'] === 'n') {
+            $errorMessage = 'This account must be verified. Please check your email.';
+            unset($successMessage);
             break;
         }
         $_SESSION['user_logged']['email'] = $safeEmail;
-        redirectTo('profile.php?success=login');
+        redirectTo(BASE_DOMAIN_URL . 'profile.php?success=login');
     } while(0);
 }
-
+// Autofill saved email
+$fillEmail = '';
+if (isset($_POST['email'])) {
+    $fillEmail = $_POST['email'];
+} else if (empty($fillEmail) && isset($_GET['email'])) {
+    $fillEmail = $_GET['email'];
+}
 ?>
 
 <!-- Header -->
@@ -43,6 +82,6 @@ if (isset($_POST['login_user'])) {
 <!-- Style -->
 <?php require_once 'styles/login.html'; ?>
 <!-- Template -->
-<?= $mustache->render($login, ['email'=> isset($_POST['email']) ? $_POST['email'] : '']); ?>
+<?= $mustache->render($login, ['email'=> $fillEmail]); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

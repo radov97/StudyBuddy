@@ -2,15 +2,18 @@
 require_once 'includes/globalfunctions.php';
 $register = getTemplate('mustacheTemplates/register.mst');
 
-// $mail_sent = mail('anasdasdci@eden.co.uk', 'Test Subject 2', 'Hello There!', 'From: andreirdv97@gmail.com');
-// echo 'mail_sent = ' . $mail_sent;
-
 if (isset($_POST['register_user'])) {
     do {
         // Check if user already exists
         $isUserValid = checkUserAccount($_POST['email']);
         if (!empty($isUserValid)) {
+            if ($isUserValid['verified'] === 'n') {
+                $errorMessage = 'This account exists and must be verified. Check your email address.';
+                unset($successMessage);
+                break;
+            }
             $errorMessage = 'There is already an account for ' . $_POST['email'];
+            unset($successMessage);
             break;
         }
         $safeEmail = trimInputSides($_POST['email']);
@@ -19,23 +22,34 @@ if (isset($_POST['register_user'])) {
         // Validate email
         if (!validateInput($safeEmail, 'email')) {
             $errorMessage = 'Please insert a valid email address.';
+            unset($successMessage);
             break;
         }
         // Validate password
         if (!validateInput($safePassword, 'password')) {
             $errorMessage = 'Your password does not match the requirements.';
+            unset($successMessage);
             break;
         }
         if ($safePassword !== $confirmPassword) {
             $errorMessage = 'Password does not match the confirmed password.';
+            unset($successMessage);
             break;
         }
-        if (!registerUser($safeEmail, $safePassword)) {
+        $passcode = generateRandomString();
+        if (!registerUser($safeEmail, $safePassword, $passcode)) {
             $errorMessage = 'Something went wrong. Could not create your account.';
+            unset($successMessage);
             break;
         }
-        $_SESSION['user_logged']['email'] = $safeEmail;
-        redirectTo('login.php?success=new_user');
+        // Register new account and ask for validation
+        $verifyUrl = BASE_DOMAIN_URL . 'login.php?success=verify&email=' . $safeEmail . '&passcode=' . $passcode;
+        if (!mail($safeEmail, 'Verify Your Account', $verifyUrl, 'From: ' . BASE_DOMAIN_EMAIL)) {
+            $errorMessage = 'Something went wrong. Could not send you a verify registration email. Please try again.';
+            unset($successMessage);
+            break;
+        }
+        redirectTo(BASE_DOMAIN_URL . 'login.php?success=new_user');
     } while (0);
 }
 

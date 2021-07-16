@@ -6,7 +6,7 @@ $mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
 // Logout user
 if (isset($_POST['logout'])) {
     unset($_SESSION['user_logged']);
-    redirectTo('login.php?success=logout');
+    redirectTo(BASE_DOMAIN_URL . 'login.php?success=logout');
 }
 // Determine navbar
 if (isset($_SESSION['user_logged'])) {

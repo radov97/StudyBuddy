@@ -5,6 +5,7 @@ if (isset($_GET['success'])) {
     switch ($_GET['success']) {
         case "login":
             $successMessage = "Welcome back. Let's find a buddy today.";
+            unset($errorMessage);
             break;
     default:
         break;
