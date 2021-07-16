@@ -1,7 +1,7 @@
 <?php
 require_once 'includes/globalfunctions.php';
+unset($_SESSION['user_logged']);
 $register = getTemplate('mustacheTemplates/register.mst');
-
 if (isset($_POST['register_user'])) {
     do {
         // Check if user already exists
@@ -52,7 +52,11 @@ if (isset($_POST['register_user'])) {
         redirectTo(BASE_DOMAIN_URL . 'login.php?success=new_user');
     } while (0);
 }
-
+// Set mustache data
+$registerData = [
+    'email' => isset($_POST['email']) ? $_POST['email'] : '',
+    'login_url' => BASE_DOMAIN_URL . 'login.php',
+];
 ?>
 
 <!-- Header -->
@@ -60,6 +64,6 @@ if (isset($_POST['register_user'])) {
 <!-- Style -->
 <?php require_once 'styles/login.html'; ?>
 <!-- Template -->
-<?= $mustache->render($register, ['email'=> isset($_POST['email']) ? $_POST['email'] : '']); ?>
+<?= $mustache->render($register, $registerData); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

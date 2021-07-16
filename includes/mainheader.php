@@ -11,8 +11,13 @@ if (isset($_POST['logout'])) {
 // Determine navbar
 if (isset($_SESSION['user_logged'])) {
     $navbar = getTemplate('mustacheTemplates/navbarlogged.mst');
+    $navbarData = [];
 } else {
     $navbar = getTemplate('mustacheTemplates/navbarsignout.mst');
+    $navbarData = [
+        'login_url' => BASE_DOMAIN_URL . 'login.php',
+        'register_url' => BASE_DOMAIN_URL . 'register.php'
+    ];
 }
 // Determine alert message
 if (isset($successMessage)) {
@@ -54,7 +59,7 @@ if (isset($errorMessage)) {
     <body>
         <main class="site-content">
     <!-- Render navbar -->
-    <?= $mustache->render($navbar, []); ?>
+    <?= $mustache->render($navbar, $navbarData); ?>
     <!-- Render alert message -->
     <?php
         if (isset($alertMessage)) {

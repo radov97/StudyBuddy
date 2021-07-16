@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/globalfunctions.php';
+unset($_SESSION['user_logged']);
 $forgotPassword = getTemplate('mustacheTemplates/forgotpassword.mst');
 if (isset($_POST['resend_password'])) {
     $safeEmail = trimInputSides($_POST['email']);
@@ -21,7 +22,8 @@ if (isset($_POST['resend_password'])) {
         unset($errorMessage);
     } while(0);
 }
-
+// Set mustache data
+$forgotPasswordData = ['login_url' => BASE_DOMAIN_URL . 'login.php'];
 ?>
 
 <!-- Header -->
@@ -29,6 +31,6 @@ if (isset($_POST['resend_password'])) {
 <!-- Style -->
 <?php require_once 'styles/login.html'; ?>
 <!-- Template -->
-<?= $mustache->render($forgotPassword, []);  ?>
+<?= $mustache->render($forgotPassword, $forgotPasswordData);  ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

@@ -1,5 +1,9 @@
 <?php
 require_once 'includes/globalfunctions.php';
+// Redirect safe to login if someone goes here without being logged
+if (!isset($_SESSION['user_logged'])) {
+    redirectTo(BASE_DOMAIN_URL . 'login.php');
+} 
 // Determine alerts
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {

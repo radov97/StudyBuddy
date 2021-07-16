@@ -1,5 +1,6 @@
 <?php
 require_once 'includes/globalfunctions.php';
+unset($_SESSION['user_logged']);
 $login = getTemplate('mustacheTemplates/login.mst');
 // Determine alerts
 if (isset($_GET['success'])) {
@@ -75,6 +76,12 @@ if (isset($_POST['email'])) {
 } else if (empty($fillEmail) && isset($_GET['email'])) {
     $fillEmail = $_GET['email'];
 }
+// Set mustache data
+$loginData = [
+    'email' => $fillEmail,
+    'forgot_password' => BASE_DOMAIN_URL . 'forgotpassword.php',
+    'activation_link' => BASE_DOMAIN_URL . 'activation.php',
+];
 ?>
 
 <!-- Header -->
@@ -82,6 +89,6 @@ if (isset($_POST['email'])) {
 <!-- Style -->
 <?php require_once 'styles/login.html'; ?>
 <!-- Template -->
-<?= $mustache->render($login, ['email'=> $fillEmail]); ?>
+<?= $mustache->render($login, $loginData); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
