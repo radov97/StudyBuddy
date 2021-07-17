@@ -35,6 +35,7 @@ if (isset($_GET['success'])) {
         case "logout":
             $successMessage = 'Successfully logout. See you next time.';
             unset($errorMessage);
+            unset($_SESSION['user_logged']);
             break;
     default:
         break;
@@ -66,7 +67,7 @@ if (isset($_POST['login_user'])) {
             break;
         }
         $_SESSION['user_logged']['email'] = $safeEmail;
-        redirectTo(BASE_DOMAIN_URL . 'profile.php?success=login');
+        redirectTo(BASE_DOMAIN_URL . 'searchpost.php?success=login');
     } while(0);
 }
 // Autofill saved email

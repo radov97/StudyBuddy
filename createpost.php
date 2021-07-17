@@ -14,7 +14,7 @@ if (!isset($_SESSION['user_logged'])) {
 
 <!-- Template -->
 
-<h1 class="bg-warning">Profile</h1>
+<h1 class="bg-warning">Create Post</h1>
 
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

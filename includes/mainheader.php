@@ -3,15 +3,15 @@
 require_once 'mustache.php-2.13.0/src/Mustache/Autoloader.php';
 Mustache_Autoloader::register();
 $mustache = new Mustache_Engine(['entity_flags' => ENT_QUOTES]);
-// Logout user
-if (isset($_POST['logout'])) {
-    unset($_SESSION['user_logged']);
-    redirectTo(BASE_DOMAIN_URL . 'login.php?success=logout');
-}
 // Determine navbar
 if (isset($_SESSION['user_logged'])) {
     $navbar = getTemplate('mustacheTemplates/navbarlogged.mst');
-    $navbarData = [];
+    $navbarData = [
+        'profile_url' => BASE_DOMAIN_URL . 'profile.php',
+        'createpost_url' => BASE_DOMAIN_URL . 'createpost.php',
+        'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
+        'logout_url' => BASE_DOMAIN_URL . 'login.php?success=logout',
+    ];
 } else {
     $navbar = getTemplate('mustacheTemplates/navbarsignout.mst');
     $navbarData = [
