@@ -1,0 +1,126 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="input-group w-75 mb-3">
+            <span class="input-group-text w-25">Email Address</span>
+            <input type="text" class="form-control shadow-none" value="<?= $_SESSION['user_logged']['email'] ?>" disabled>
+            <button 
+                class="input-group-text btn btn-dark shadow-none"
+                data-bs-toggle="modal" 
+                data-bs-target="#change-password"
+            >
+                Change Password
+            </button>
+        </div>
+        <form class="w-75" method="POST">
+            <!-- Description -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Description</span>
+                <textarea
+                    class="form-control shadow-none input-form" 
+                    placeholder="Add a short description about yourself here"
+                    rows="5"
+                    maxlength="255"
+                    name="description"
+                ></textarea>
+                <button class="input-group-text btn btn-warning shadow-none" name="save_description">Save</button>
+            </div>
+            <!-- Course Type -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Course Type</span>
+                    <select name="course_type" class="form-control shadow-none input-form">
+                        <option disabled selected>Select your course type</option>
+                        <option value="bachelor">Bachelor Degree</option>
+                        <option value="msc">Master Course</option>
+                        <option value="phd">Phd</option>
+                    </select>
+                <button class="input-group-text btn btn-warning shadow-none" name="save_course_type">Save</button>
+            </div>
+            <!-- Course Name -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Course Name</span>
+                <input 
+                    type="text" 
+                    class="form-control shadow-none input-form"
+                    name="course_name"
+                    placeholder="From your student id (e.g. Computer Science)"
+                    maxlength="255" 
+                    value=""
+                >
+                <button class="input-group-text btn btn-warning shadow-none" name="save_course_name">Save</button>
+            </div>
+            <!-- Course Tag -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Course Tag</span>
+                <input 
+                    type="text" 
+                    class="form-control shadow-none input-form"
+                    name="course_tag"
+                    placeholder="From your student id (e.g. CSMS)"
+                    maxlength="255" 
+                    value=""
+                >
+                <button class="input-group-text btn btn-warning shadow-none" name="save_course_tag">Save</button>
+            </div>
+            <!-- Academic Year -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Academic Year</span>
+                <input 
+                    type="number" 
+                    class="form-control shadow-none input-form"
+                    name="academic_year"
+                    placeholder="Select your academic year"
+                    min="1"
+                    max="6" 
+                    value=""
+                >
+                <button class="input-group-text btn btn-warning shadow-none" name="save_academic_year">Save</button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- Change Password Modal -->
+<form method="POST">
+    <div class="modal fade" id="change-password" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-dark text-light">
+                    <h5 class="modal-title"><i class="bi bi-file-earmark-lock"></i> Password</h5>
+                </div>
+                <div class="modal-body">
+                    <ul>
+                        <li>May contain letter and numbers</li>
+                        <li>Must contain at least 1 number and 1 letter</li>
+                        <li>May contain any of these characters: !@#$%</li>
+                        <li>Must be 8-20 characters</li>
+                    </ul>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Old Password</span>
+                        <input type="password" class="form-control shadow-none input-form" name="old_password" maxlength="20" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">New Password</span>
+                        <input type="password" class="form-control shadow-none input-form" name="new_password" maxlength="20" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Confirm Password</span>
+                        <input type="password" class="form-control shadow-none input-form" name="confirm_password" maxlength="20" required>
+                    </div>
+                </div>
+                <div class="modal-footer bg-dark">
+                    <input
+                        type="button"
+                        class="btn btn-danger shadow-none" 
+                        data-bs-dismiss="modal"
+                        value="Close"
+                    />
+                    <input
+                        type="submit"
+                        class="btn btn-outline-light shadow-none"  
+                        name="change_password" 
+                        value="Change Password"
+                    />
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
