@@ -12,18 +12,34 @@ if (!isset($_SESSION['user_logged'])) {
 <?php require_once 'includes/mainheader.php'; ?>
 <!-- Style -->
 <style>
-
+    input {
+        background-color: #fff8c5 !important;
+        transition: border .5s;
+    }
+    input:focus {
+        border: 5px #ffc107 solid !important;
+    }
+    input:disabled {
+        background-color: #e9ecef !important;
+    }
 
 </style>
 <!-- Template -->
 
-<div class="container bg-danger test">
-    <h1>
-    t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-    </h1>
-    <h1>
-    t is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
-    </h1>
+<div class="container">
+    <div class="row justify-content-center">
+    <div class="input-group w-75 mb-3">
+        <span class="input-group-text w-25 text-center test">Email Address</span>
+        <input type="text" class="form-control shadow-none" value="<?= $_SESSION['user_logged']['email'] ?>" disabled>
+        <button class="input-group-text btn btn-dark shadow-none">Change Password</button>
+    </div>
+    <div class="input-group w-75">
+        <span class="input-group-text w-25 text-center">Description</span>
+        <input type="text" class="form-control shadow-none" value="<?= $_SESSION['user_logged']['email'] ?>">
+        <button class="input-group-text btn btn-warning shadow-none">Save</button>
+    </div>
+    </div>
+
 </div>
 
 <!-- Footer -->
