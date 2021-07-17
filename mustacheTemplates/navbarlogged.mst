@@ -1,11 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <img 
+    <img
         src="resources/logo/logo_white_large.png"
         id="navbar-logo-img"
-        alt="StudBud Logo" 
+        alt="StudBud Logo"
     >
-    <div class="d-block">
+    <div class="d-block mr-0 ml-auto">
         <a 
             class="btn btn-info btn-lg shadow-none"
             href="{{searchpost_url}}"
