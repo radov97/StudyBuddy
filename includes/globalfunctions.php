@@ -17,12 +17,22 @@ function registerUser(string $email, string $password, string $passcode): bool
 {
     global $conn;
     $insert = 
-        "INSERT INTO user_accounts (email, password, verified, url_passcode) 
+        "INSERT INTO user_accounts (
+                email, 
+                password, 
+                verified, 
+                url_passcode,
+                description,
+                course_type,
+                course_name,
+                course_tag,
+                academic_year
+            ) 
             VALUES (
                '".dbEscapeString($email)."',
                '".dbEscapeString($password)."',
                'n', 
-               '".dbEscapeString($passcode)."'
+               '".dbEscapeString($passcode)."', '', '', '', '', ''
             )";
     $result = mysqli_query($conn, $insert);
     if (!$result) {
@@ -86,7 +96,12 @@ function checkUserAccount(string $email): array
         'email' => $row['email'],
         'password' => $row['password'],
         'verified' => $row['verified'],
-        'url_passcode' => $row['url_passcode']
+        'url_passcode' => $row['url_passcode'],
+        'description' => $row['description'],
+        'course_type' => $row['course_type'],
+        'course_name' => $row['course_name'],
+        'course_tag' => $row['course_tag'],
+        'academic_year' => $row['academic_year'],
     ];
 }
 // Codebase functions

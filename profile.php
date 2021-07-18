@@ -51,7 +51,70 @@ if (isset($_POST['change_password'])) {
     } while(0);
 
 }
-// debug($_POST);
+// Update description
+if (isset($_POST['save_description'])) {
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['description'], 'description')) {
+        $errorMessage = 'Something went wrong. Could not update the description. Please try again later.';
+        unset($successMessage);
+        
+    } else {
+        $successMessage = 'Your profile description has been successfully updated.';
+        unset($errorMessage);
+    }
+}
+// Update course type
+if (isset($_POST['save_course_type'])) {
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['course_type'], 'course_type')) {
+        $errorMessage = 'Something went wrong. Could not update the course type. Please try again later.';
+        unset($successMessage);
+        
+    } else {
+        $successMessage = 'Your profile course type has been successfully updated.';
+        unset($errorMessage);
+    }
+}
+// Update course name
+if (isset($_POST['save_course_name'])) {
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['course_name'], 'course_name')) {
+        $errorMessage = 'Something went wrong. Could not update the course name. Please try again later.';
+        unset($successMessage);
+        
+    } else {
+        $successMessage = 'Your profile course name has been successfully updated.';
+        unset($errorMessage);
+    }
+}
+// Update course tag
+if (isset($_POST['save_course_tag'])) {
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['course_tag'], 'course_tag')) {
+        $errorMessage = 'Something went wrong. Could not update the course tag. Please try again later.';
+        unset($successMessage);
+        
+    } else {
+        $successMessage = 'Your profile course tag has been successfully updated.';
+        unset($errorMessage);
+    }
+}
+// Update academic year
+if (isset($_POST['save_academic_year'])) {
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['academic_year'], 'academic_year')) {
+        $errorMessage = 'Something went wrong. Could not update the academic year. Please try again later.';
+        unset($successMessage);
+        
+    } else {
+        $successMessage = 'Your profile academic year has been successfully updated.';
+        unset($errorMessage);
+    }
+}
+
+// Set mustache data
+$userData = checkUserAccount($_SESSION['user_logged']['email']);
+$profileData = [
+    'description' => $userData['description'],
+    'course_name' => $userData['course_name'],
+    'course_tag' => $userData['course_tag'],
+    'academic_year' => $userData['academic_year'],
+];
 
 ?>
 
@@ -60,6 +123,13 @@ if (isset($_POST['change_password'])) {
 <!-- Style -->
 <?php require_once 'styles/profile.html'; ?>
 <!-- Template -->
-<?= $mustache->render($profile, []); ?>
+<?= $mustache->render($profile, $profileData); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
+<script>
+$(document).ready(() => {
+    // Autoselect the course type if any
+    let courseType = '<?= !empty($userData['course_type']) ? $userData['course_type'] : '' ?>';
+    $("#course-type option[value='" + courseType + "']").attr("selected","selected");
+});
+</script>

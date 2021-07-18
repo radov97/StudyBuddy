@@ -21,13 +21,13 @@
                     rows="5"
                     maxlength="255"
                     name="description"
-                ></textarea>
+                >{{description}}</textarea>
                 <button class="input-group-text btn btn-warning shadow-none" name="save_description">Save</button>
             </div>
             <!-- Course Type -->
             <div class="input-group w-100 mb-3">
                 <span class="input-group-text w-25">Course Type</span>
-                    <select name="course_type" class="form-control shadow-none input-form">
+                    <select id="course-type" name="course_type" class="form-control shadow-none input-form">
                         <option disabled selected>Select your course type</option>
                         <option value="bachelor">Bachelor Degree</option>
                         <option value="msc">Master Course</option>
@@ -43,8 +43,8 @@
                     class="form-control shadow-none input-form"
                     name="course_name"
                     placeholder="From your student id (e.g. Computer Science)"
-                    maxlength="255" 
-                    value=""
+                    maxlength="50" 
+                    value="{{course_name}}"
                 >
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_name">Save</button>
             </div>
@@ -56,8 +56,8 @@
                     class="form-control shadow-none input-form"
                     name="course_tag"
                     placeholder="From your student id (e.g. CSMS)"
-                    maxlength="255" 
-                    value=""
+                    maxlength="10" 
+                    value="{{course_tag}}"
                 >
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_tag">Save</button>
             </div>
@@ -71,7 +71,7 @@
                     placeholder="Select your academic year"
                     min="1"
                     max="6" 
-                    value=""
+                    value="{{academic_year}}"
                 >
                 <button class="input-group-text btn btn-warning shadow-none" name="save_academic_year">Save</button>
             </div>
