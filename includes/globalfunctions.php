@@ -32,7 +32,7 @@ function registerUser(string $email, string $password, string $passcode): bool
 
     return true;
 }
-
+// Used to validate a new account
 function verifyUserAccount(string $email, string $passcode): bool
 {
     global $conn;
@@ -40,6 +40,21 @@ function verifyUserAccount(string $email, string $passcode): bool
         "UPDATE user_accounts SET verified = 'y' 
             WHERE email = '" . dbEscapeString($email) . "' 
             AND url_passcode = '" . dbEscapeString($passcode) . "'";
+    $result = mysqli_query($conn, $update);
+    if (!$result) {
+
+        return false;
+    }
+
+    return true;
+}
+// Used to update user data 
+function updateUserPersonalData(string $email, string $newParameter, string $parameter): bool
+{
+    global $conn;
+    $update = 
+        "UPDATE user_accounts SET " . dbEscapeString($parameter) . " = '" . dbEscapeString($newParameter) . "' 
+            WHERE email = '" . dbEscapeString($email) . "'"; 
     $result = mysqli_query($conn, $update);
     if (!$result) {
 
