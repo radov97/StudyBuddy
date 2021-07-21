@@ -15,10 +15,17 @@
         </a>
         <a 
             class="btn btn-info btn-lg shadow-none"
-            href="{{createpost_url}}"
+            href="{{addpost_url}}"
         >
             <i class="bi bi-file-plus"></i>
-            Create Post
+            Add Post
+        </a>
+        <a 
+            class="btn btn-info btn-lg shadow-none"
+            href="{{myposts_url}}"
+        >
+            <i class="bi bi-file-earmark-text"></i>
+            My Posts
         </a>
         <a 
             class="btn btn-info btn-lg shadow-none"

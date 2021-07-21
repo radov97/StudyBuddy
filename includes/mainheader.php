@@ -8,7 +8,8 @@ if (isset($_SESSION['user_logged'])) {
     $navbar = getTemplate('mustacheTemplates/navbarlogged.mst');
     $navbarData = [
         'profile_url' => BASE_DOMAIN_URL . 'profile.php',
-        'createpost_url' => BASE_DOMAIN_URL . 'createpost.php',
+        'addpost_url' => BASE_DOMAIN_URL . 'addpost.php',
+        'myposts_url' => BASE_DOMAIN_URL . 'myposts.php',
         'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
         'logout_url' => BASE_DOMAIN_URL . 'login.php?success=logout',
     ];
