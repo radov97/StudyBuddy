@@ -1,0 +1,79 @@
+<div class="container">
+    <div class="row justify-content-center">
+        <form class="w-75" method="POST">
+            <!-- Post Title -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Title</span>
+                <input 
+                    type="text" 
+                    class="form-control shadow-none input-form"
+                    name="title"
+                    placeholder="Add a title for your post"
+                    maxlength="50"
+                    required
+                    autofocus
+                >
+            </div>
+            <!-- Module -->
+            <div class="input-group w-100 mb-3">
+                <div class="input-group-text w-25">
+                    <button
+                        type="button"
+                        class="btn btn-lg btn-outline-dark rounded-circle p-0 m-1 shadow-none"
+                        data-bs-toggle="modal" 
+                        data-bs-target="#module-tips"
+                    >
+                        <i class="bi bi-question-circle"></i>
+                    </button>
+                    Module
+                </div>
+                <input
+                    id="module-input"
+                    type="text" 
+                    class="form-control shadow-none input-form"
+                    name="module"
+                    placeholder="e.g. COMP123"
+                    maxlength="50"
+                >
+            </div>
+            <!-- Description -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Description</span>
+                <textarea
+                    class="form-control shadow-none input-form" 
+                    placeholder="Add a short description about your intention for this post"
+                    rows="8"
+                    maxlength="1000"
+                    name="description"
+                    required
+                ></textarea>
+            </div>
+            <input type="submit" class="btn btn-warning btn-lg w-25 float-end" value="Add Post">
+        </form>
+    </div>
+</div>
+<!-- Module Tips Modal -->
+<div class="modal fade" id="module-tips" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header bg-dark text-light">
+        <h5 class="modal-title">Module</h5>
+      </div>
+      <div class="modal-body">
+        <p>If your post is related to one of your modules, please type in the module tag (e.g. COMP123).</p>
+        <p>By doing this, the system will be able to show your post to students that are interested in the same module.</p>
+        <p>Otherwise, just leave this field empty and continue.</p>
+      </div>
+      <div class="modal-footer bg-dark">
+        <button 
+            id="module-understood-btn"
+            type="button" 
+            class="btn btn-outline-light w-100 shadow-none" 
+            data-bs-dismiss="modal"
+        >
+            Understood
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

@@ -67,3 +67,14 @@ $registerData = [
 <?= $mustache->render($register, $registerData); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
+<script>
+$(document).ready(() => {
+    // Autoselect password field
+    $('#password-understood-btn').click(() => {
+        // 500ms to wait the modal to fade and then autofocus the input
+        setTimeout(() => { 
+            $('#password-input').focus(); 
+        }, 500);
+    });
+});
+</script>

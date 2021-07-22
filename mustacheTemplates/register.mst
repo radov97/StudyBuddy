@@ -27,7 +27,7 @@
                 <i class="bi bi-question-circle"></i>
             </button>
             <label class="form-label">Password</label>
-            <input type="password" class="form-control shadow-none" name="password" maxlength="20" required>
+            <input id="password-input" type="password" class="form-control shadow-none" name="password" maxlength="20" required>
         </div>
         <div class="mb-3">
             <label class="form-label">Confirm Password</label>
@@ -60,7 +60,14 @@
         </ul>
       </div>
       <div class="modal-footer bg-dark">
-        <button type="button" class="btn btn-outline-light w-100 shadow-none" data-bs-dismiss="modal">Understood</button>
+        <button
+            id="password-understood-btn"
+            type="button" 
+            class="btn btn-outline-light w-100 shadow-none" 
+            data-bs-dismiss="modal"
+        >
+            Understood
+        </button>
       </div>
     </div>
   </div>
