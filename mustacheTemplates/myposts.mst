@@ -1,0 +1,20 @@
+<div class="container">
+    <div class="flex-container">
+        {{#posts}}
+        <div class="card text-white bg-dark m-3">
+            <div class="card-header">{{date}}</div>
+            <div class="card-body">
+                <h5 class="card-title">{{module}}</h5>
+                <p class="card-text">{{title}}</p>
+                <a 
+                    class="btn btn-warning w-25 float-end shadow-none"
+                    href={{edit_url}}
+                >
+                    <i class="bi bi-pencil"></i> 
+                    Edit
+                </a>
+            </div>
+        </div>
+        {{/posts}}
+    </div>
+</div>

@@ -130,7 +130,7 @@ function getUserPosts(string $email): array
 {
     global $conn;
     $posts = [];
-    $query = "SELECT * FROM posts WHERE email = '" . dbEscapeString($email) . "'";
+    $query = "SELECT * FROM posts WHERE email = '" . dbEscapeString($email) . "' ORDER BY date DESC";
     $result = mysqli_query($conn, $query);
     if (!$result) {
 
