@@ -53,10 +53,10 @@ if (isset($_POST['change_password'])) {
 }
 // Update description
 if (isset($_POST['save_description'])) {
-    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['description'], 'description')) {
+    $safeDescription = trimInputSides($_POST['description']);
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $safeDescription, 'description')) {
         $errorMessage = 'Something went wrong. Could not update the description. Please try again later.';
         unset($successMessage);
-        
     } else {
         $successMessage = 'Your profile description has been successfully updated.';
         unset($errorMessage);
@@ -64,10 +64,10 @@ if (isset($_POST['save_description'])) {
 }
 // Update course type
 if (isset($_POST['save_course_type'])) {
-    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['course_type'], 'course_type')) {
+    $safeCourseType = trimInputSides($_POST['course_type']);
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $safeCourseType, 'course_type')) {
         $errorMessage = 'Something went wrong. Could not update the course type. Please try again later.';
         unset($successMessage);
-        
     } else {
         $successMessage = 'Your profile course type has been successfully updated.';
         unset($errorMessage);
@@ -75,10 +75,10 @@ if (isset($_POST['save_course_type'])) {
 }
 // Update course name
 if (isset($_POST['save_course_name'])) {
-    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['course_name'], 'course_name')) {
+    $safeCourseName = trimInputSides($_POST['course_name']);
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $safeCourseName, 'course_name')) {
         $errorMessage = 'Something went wrong. Could not update the course name. Please try again later.';
         unset($successMessage);
-        
     } else {
         $successMessage = 'Your profile course name has been successfully updated.';
         unset($errorMessage);
@@ -86,10 +86,10 @@ if (isset($_POST['save_course_name'])) {
 }
 // Update course tag
 if (isset($_POST['save_course_tag'])) {
-    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['course_tag'], 'course_tag')) {
+    $safeCourseTag = trimInputSides($_POST['course_tag']);
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $safeCourseTag, 'course_tag')) {
         $errorMessage = 'Something went wrong. Could not update the course tag. Please try again later.';
         unset($successMessage);
-        
     } else {
         $successMessage = 'Your profile course tag has been successfully updated.';
         unset($errorMessage);
@@ -97,7 +97,8 @@ if (isset($_POST['save_course_tag'])) {
 }
 // Update academic year
 if (isset($_POST['save_academic_year'])) {
-    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['academic_year'], 'academic_year')) {
+    $safeAcademicYear = trimInputSides($_POST['academic_year']);
+    if (!updateUserPersonalData($_SESSION['user_logged']['email'], $safeAcademicYear, 'academic_year')) {
         $errorMessage = 'Something went wrong. Could not update the academic year. Please try again later.';
         unset($successMessage);
         

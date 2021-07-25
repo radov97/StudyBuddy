@@ -104,6 +104,27 @@ function checkUserAccount(string $email): array
         'academic_year' => $row['academic_year'],
     ];
 }
+// Used to add posts
+function addPost(string $title, string $module, string $description, string $email): bool 
+{
+    global $conn;
+    $insert = "INSERT INTO posts (id, title, module, description, email, date) 
+        VALUES (
+            NULL, 
+            '".dbEscapeString($title)."', 
+            '".dbEscapeString($module)."', 
+            '".dbEscapeString($description)."', 
+            '".dbEscapeString($email)."', 
+            current_timestamp()
+        )";
+    $result = mysqli_query($conn, $insert);
+    if (!$result) {
+
+        return false;
+    }
+
+    return true;
+}
 // Codebase functions
 
 // Used to insert mustache templates

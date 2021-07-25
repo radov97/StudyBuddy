@@ -3,9 +3,21 @@ require_once 'includes/globalfunctions.php';
 // Redirect safe to login if someone goes here without being logged
 if (!isset($_SESSION['user_logged'])) {
     redirectTo(BASE_DOMAIN_URL . 'login.php');
-} 
+}
 $addPost = getTemplate('mustacheTemplates/addpost.mst');
-$addPostData = [];
+
+if (isset($_POST['add_post'])) {
+    $safeTitle = trimInputSides($_POST['title']);
+    $safeModule = trimInputSides($_POST['module']);
+    if (addPost($safeTitle, $safeModule, $_POST['description'], $_SESSION['user_logged']['email'])) {
+        $successMessage = 'Your post has been added successfully.';
+        unset($errorMessage);
+    } else {
+        $errorMessage = 'Something went wrong. Could not add this post. Please try again later.';
+        unset($successMessage);
+    }
+}
+
 ?>
 
 <!-- Header -->
@@ -13,7 +25,7 @@ $addPostData = [];
 <!-- Style -->
 <?php require_once 'styles/addpost.html'; ?>
 <!-- Template -->
-<?= $mustache->render($addPost, $addPostData); ?>
+<?= $mustache->render($addPost, []); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
 <script>
