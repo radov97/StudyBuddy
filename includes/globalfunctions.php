@@ -3,6 +3,7 @@ require_once 'includes/dbh.inc.php';
 // Global variables
 define("BASE_DOMAIN_URL", "http://localhost/StudyBuddy/");
 define("BASE_DOMAIN_EMAIL", "andreirdv97@gmail.com");
+define("USER_MAX_ALLOWED_POSTS", 4);
 // Database interaction functions
 
 // Used to insert strings securely into DB
@@ -26,13 +27,14 @@ function registerUser(string $email, string $password, string $passcode): bool
                 course_type,
                 course_name,
                 course_tag,
-                academic_year
+                academic_year,
+                total_posts
             ) 
             VALUES (
                '".dbEscapeString($email)."',
                '".dbEscapeString($password)."',
                'n', 
-               '".dbEscapeString($passcode)."', '', '', '', '', ''
+               '".dbEscapeString($passcode)."', '', '', '', '', '', '0'
             )";
     $result = mysqli_query($conn, $insert);
     if (!$result) {
@@ -102,6 +104,7 @@ function checkUserAccount(string $email): array
         'course_name' => $row['course_name'],
         'course_tag' => $row['course_tag'],
         'academic_year' => $row['academic_year'],
+        'total_posts' => $row['total_posts'],
     ];
 }
 // Used to add posts
