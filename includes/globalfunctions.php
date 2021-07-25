@@ -125,6 +125,28 @@ function addPost(string $title, string $module, string $description, string $ema
 
     return true;
 }
+// Used to get posts for a user
+function getUserPosts(string $email): array 
+{
+    global $conn;
+    $posts = [];
+    $query = "SELECT * FROM posts WHERE email = '" . dbEscapeString($email) . "'";
+    $result = mysqli_query($conn, $query);
+    if (!$result) {
+
+        return $posts;
+    }
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_free_result($result);
+
+        return $posts;
+    }
+    while ($row = mysqli_fetch_assoc($result)) {
+        $posts[] = $row;
+    }
+    mysqli_free_result($result);
+    return $posts;
+}
 // Codebase functions
 
 // Used to insert mustache templates

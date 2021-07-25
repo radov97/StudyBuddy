@@ -4,7 +4,19 @@ require_once 'includes/globalfunctions.php';
 if (!isset($_SESSION['user_logged'])) {
     redirectTo(BASE_DOMAIN_URL . 'login.php');
 } 
-
+$userPosts = getUserPosts('tetst');
+// $userPosts = getUserPosts($_SESSION['user_logged']['email']);
+do {
+    // No posts
+    if (empty($userPosts)) {
+        $myposts = getTemplate('mustacheTemplates/mypostsnone.mst');
+        $mypostsData = [
+            'addpost_url' => BASE_DOMAIN_URL . 'addpost.php'
+        ];
+        break;
+    }
+    // Show posts
+} while (0);
 
 ?>
 
@@ -18,20 +30,6 @@ if (!isset($_SESSION['user_logged'])) {
     }
 </style>
 <!-- Template -->
-
-<div class="container text-center">
-    <div class="row bg-warning rounded mt-5 p-1 no-posts">
-        <h2>You have no posts yet</h2>
-    </div>
-    <a 
-        class="btn btn-warning btn-lg shadow-none w-25 m-5"
-        href="addpost.php"
-    >
-        <i class="bi bi-file-plus"></i>
-        Add Post
-    </a>
-
-</div>
-
+<?= $mustache->render($myposts, $mypostsData); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
