@@ -1,0 +1,63 @@
+<div class="container">
+    <div class="row justify-content-center mt-5 mb-5">
+        <form class="w-75" method="POST">
+            <!-- Post Title -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Title</span>
+                <input 
+                    type="text" 
+                    class="form-control shadow-none input-form"
+                    name="title"
+                    placeholder="Add a title for your post"
+                    maxlength="50"
+                    value="{{title}}"
+                    required
+                    autofocus
+                >
+            </div>
+            <!-- Module -->
+            <div class="input-group w-100 mb-3">
+                <div class="input-group-text w-25">Module</div>
+                <input
+                    type="text" 
+                    class="form-control shadow-none input-form"
+                    name="module"
+                    placeholder="e.g. COMP123"
+                    maxlength="50"
+                    value="{{module}}"
+                >
+            </div>
+            <!-- Description -->
+            <div class="input-group w-100 mb-3">
+                <span class="input-group-text w-25">Description</span>
+                <textarea
+                    class="form-control shadow-none input-form" 
+                    placeholder="Add a short description about your intention for this post"
+                    rows="8"
+                    maxlength="1000"
+                    name="description"
+                    required
+                >{{description}}</textarea>
+            </div>
+
+            <input 
+                type="submit" 
+                class="btn btn-warning shadow-none btn-lg w-25 float-end"
+                name="update_post"
+                value="Update"
+            >
+            <input 
+                type="submit" 
+                class="btn btn-danger shadow-none btn-lg w-25 float-end"
+                name="delete_post"
+                value="Delete"
+            >
+            <a 
+                class="btn btn-info shadow-none btn-lg w-25 float-start"
+                href={{myprofile_url}}
+            >
+                Back
+            </a>
+        </form>
+    </div>
+</div>

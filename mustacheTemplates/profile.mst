@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row justify-content-center">
+    <div class="row justify-content-center mt-5 mb-5">
         <div class="input-group w-75 mb-3">
             <span class="input-group-text w-25">Email Address</span>
             <input type="text" class="form-control shadow-none" value="<?= $_SESSION['user_logged']['email'] ?>" disabled>
