@@ -150,6 +150,59 @@ function getUserPosts(string $email): array
     mysqli_free_result($result);
     return $posts;
 }
+// Used to get a post having id
+function getPostById(int $id): array
+{
+    global $conn;
+    $post = [];
+    $query = "SELECT * FROM posts WHERE id = " . (int) $id;
+    $result = mysqli_query($conn, $query);
+    if (!$result) {
+
+        return $post;
+    }
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_free_result($result);
+
+        return $post;
+    }
+    while ($row = mysqli_fetch_assoc($result)) {
+        $post[] = $row;
+    }
+    mysqli_free_result($result);
+    return $post[0]; 
+}
+// Used to delete a post
+function deletePost(int $id): bool 
+{
+    global $conn;
+    $delete = "DELETE FROM posts WHERE id = " . (int) $id;
+    $result = mysqli_query($conn, $delete);
+    if (!$result) {
+
+        return false;
+    }
+
+    return true;
+}
+// Used to update a post
+function updatePost(int $id, string $title, string $module, string $description): bool 
+{
+    global $conn;
+    $update = 
+        "UPDATE posts SET 
+            title = '" . dbEscapeString($title) . "',
+            module = '" . dbEscapeString($module) . "',
+            description = '" . dbEscapeString($description) . "'
+            WHERE id =" . (int) $id;
+    $result = mysqli_query($conn, $update);
+    if (!$result) {
+
+        return false;
+    }
+
+    return true;
+}
 // Codebase functions
 
 // Used to insert mustache templates

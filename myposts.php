@@ -7,7 +7,7 @@ if (!isset($_SESSION['user_logged'])) {
 // Determine alerts
 if (isset($_GET['success'])) {
     switch ($_GET['success']) {
-        case "edit":
+        case "update":
             $successMessage = 'Your post have successfully been updated.';
             unset($errorMessage);
             break;
