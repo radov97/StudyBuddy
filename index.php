@@ -9,8 +9,6 @@ debug($_SERVER);
 <!-- Style -->
 
 <!-- Template -->
-<h1>This page is just a test</h1>
-<h1>I love you Dasha</h1>
 <?= $mustache->render($template, ['planet' => 'World!']);  ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>

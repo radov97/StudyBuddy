@@ -203,6 +203,28 @@ function updatePost(int $id, string $title, string $module, string $description)
 
     return true;
 }
+function getAllPosts(): array
+{
+    global $conn;
+    $post = [];
+    $query = "SELECT * FROM posts ORDER BY date DESC";
+    $result = mysqli_query($conn, $query);
+    if (!$result) {
+
+        return $post;
+    }
+    if (mysqli_num_rows($result) == 0) {
+        mysqli_free_result($result);
+
+        return $post;
+    }
+    while ($row = mysqli_fetch_assoc($result)) {
+        $post[] = $row;
+    }
+    mysqli_free_result($result);
+    return $post; 
+}
+
 // Codebase functions
 
 // Used to insert mustache templates
