@@ -13,7 +13,7 @@
         </div>
         <form class="w-75" method="POST">
             <!-- Description -->
-            <div class="input-group w-100 mb-3">
+            <div class="input-group w-100 shadow">
                 <span class="input-group-text w-25">Description</span>
                 <textarea
                     class="form-control shadow-none input-form" 
@@ -25,7 +25,7 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_description">Save</button>
             </div>
             <!-- Course Type -->
-            <div class="input-group w-100 mb-3">
+            <div class="input-group w-100 shadow">
                 <span class="input-group-text w-25">Course Type</span>
                     <select id="course-type" name="course_type" class="form-control shadow-none input-form">
                         <option disabled selected>Select your course type</option>
@@ -36,7 +36,7 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_type">Save</button>
             </div>
             <!-- Course Name -->
-            <div class="input-group w-100 mb-3">
+            <div class="input-group w-100 shadow">
                 <span class="input-group-text w-25">Course Name</span>
                 <input 
                     type="text" 
@@ -49,7 +49,7 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_name">Save</button>
             </div>
             <!-- Course Tag -->
-            <div class="input-group w-100 mb-3">
+            <div class="input-group w-100 shadow">
                 <span class="input-group-text w-25">Course Tag</span>
                 <input 
                     type="text" 
@@ -62,7 +62,7 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_tag">Save</button>
             </div>
             <!-- Academic Year -->
-            <div class="input-group w-100 mb-3">
+            <div class="input-group w-100 shadow">
                 <span class="input-group-text w-25">Academic Year</span>
                 <input 
                     type="number" 
