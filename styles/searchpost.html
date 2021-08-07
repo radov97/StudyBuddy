@@ -22,4 +22,40 @@
         justify-content: space-between;
         align-items: center;
     }
+    .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: 0;
+        z-index: 9999;
+    }
+    .filters-container {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        margin: 0 .25rem;
+        background-color:#96afb8;
+        border-bottom-left-radius: 25px;
+        border-bottom-right-radius: 25px;
+        border-left: 2px solid #212529;
+        border-right: 2px solid #212529;
+        border-bottom: 2px solid #212529;
+    }
+    .filtern-btn-content {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+    }
+    .input-form {
+        background-color: #fff8c5 !important;
+        transition: border .25s;
+        resize: none;
+        margin-bottom: 1rem !important;
+    }
+    .input-form:focus {
+        border: 4px #ffc107 solid !important;
+    }
 </style>

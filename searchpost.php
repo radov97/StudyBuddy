@@ -25,6 +25,8 @@ foreach ($allPosts as $index => $postinfo) {
         'module' => !empty($postinfo['module']) ? $postinfo['module'] : 'NO MODULE',
         'title' => $postinfo['title'],
         'description' => $postinfo['description'],
+        'disabled' => ($postinfo['email'] === $_SESSION['user_logged']['email']) ? 'disabled' : '',
+        'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
     ];        
 }
 
@@ -38,3 +40,17 @@ foreach ($allPosts as $index => $postinfo) {
 <?= $mustache->render($searchpost, $postsData); ?>
 <!-- Footer -->
 <?php require_once 'includes/mainfooter.php'; ?>
+<script>
+    $(document).ready(() => {
+        $("#filters-container-id").slideToggle("fast");
+        $('#filters-btn').click(() => {
+            $("#filters-container-id").slideToggle("slow");
+            setTimeout(() => { 
+                $('#arrow-icon').toggleClass("bi-sort-down-alt bi-sort-up-alt");
+            }, 450);
+        });
+        $('#scroll-to-top-btn').click(() => {
+            $(window).scrollTop(0);
+        });
+    });
+</script>

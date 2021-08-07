@@ -1,3 +1,89 @@
+<div class="container-fluid sticky">
+    <div class="btn-group w-100 border border-2 border-dark">
+        <button 
+            id="scroll-to-top-btn"
+            class="btn btn-lg btn-danger p-1 w-25 shadow-none"
+        >
+            <i class="bi bi-file-arrow-up-fill h2"></i>
+        </button>
+        <button
+            id="filters-btn"
+            class="btn btn-lg btn-info w-50 shadow-none"
+        >
+            <div class="filtern-btn-content">
+                <div class="mb-0 h5"><i class="bi bi-funnel-fill"> Filters</i></div>
+                <i id="arrow-icon" class="bi bi-sort-down-alt h3 mb-0"></i>
+            </div>
+        </button>
+        <a 
+            class="btn btn-warning w-25 shadow-none"
+            href="{{searchpost_url}}"
+        >
+            <i class="bi bi-trash2-fill h4 mb-0"> Reset</i>
+        </a>
+    </div>
+    <div id="filters-container-id" class="filters-container">
+        <form class="w-50 mb-0" method="POST">
+            <!-- Course Type -->
+            <label class="mb-2">Course Type</label>
+            <select id="course-type" name="course_type" class="form-control shadow-none input-form">
+                <option disabled selected>Search course type</option>
+                <option value="bachelor">Bachelor Degree</option>
+                <option value="msc">Master Course</option>
+                <option value="phd">Phd</option>
+            </select>
+            <!-- Academic Year -->
+            <label class="mb-2">Academic Year</label>
+            <input 
+                type="number" 
+                class="form-control shadow-none input-form"
+                name="academic_year"
+                placeholder="Search year"
+                min="1"
+                max="6" 
+            >
+            <!-- Course Name -->
+            <label class="mb-2">Course Name</label>
+            <input 
+                type="text" 
+                class="form-control shadow-none input-form"
+                name="course_name"
+                placeholder="Search course name"
+                maxlength="50" 
+            >
+            <!-- Course Tag -->
+            <label class="mb-2">Course Tag</label>
+            <input 
+                type="text" 
+                class="form-control shadow-none input-form"
+                name="course_tag"
+                placeholder="Search course tag"
+                maxlength="10" 
+            >
+            <!-- Module -->
+            <label class="mb-2">Module</label>
+            <input
+                type="text" 
+                class="form-control shadow-none input-form"
+                name="module"
+                placeholder="Search module"
+                maxlength="50"
+            >
+            <!-- Title -->
+            <label class="mb-2">Title Like</label>
+            <input 
+                type="text" 
+                class="form-control shadow-none input-form"
+                name="title"
+                placeholder="e.g. biology help"
+                maxlength="50"
+            >
+            <button class="btn btn-warning w-100 mt-2" name="filters_applied">
+                Apply Filters and Search Posts
+            </button>
+        </form>
+    </div>
+</div>
 <div class="container">
     <div class="posts-container">
         {{#posts}}
@@ -25,7 +111,7 @@
                     <h6 class="text-info">
                         {{date}}
                     </h6>
-                    <button class="btn btn-info btn-lg shadow-none">
+                    <button class="btn btn-info btn-lg shadow-none" {{disabled}}>
                         <i class="bi bi-envelope-open-fill"></i>
                         Send Email
                     </button>
