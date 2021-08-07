@@ -1,5 +1,5 @@
 <div class="container-fluid sticky">
-    <div class="btn-group w-100 border border-2 border-dark">
+    <div class="btn-group w-100 border border-2 border-dark shadow">
         <button 
             id="scroll-to-top-btn"
             class="btn btn-lg btn-danger p-1 w-25 shadow-none"
