@@ -31,6 +31,18 @@ foreach ($allPosts as $index => $postinfo) {
     ];        
 }
 
+if (isset($_POST['filters_applied'])) {
+    $filters = $_POST;
+    foreach ($filters as $key => $filterinfo) {
+        if (empty($filterinfo)) {
+            unset($filters[$key]);
+        } else {
+            $filters[$key] = trimInputSides($filters[$key]);
+        }
+    }
+    debug($filters);
+}
+
 ?>
 <!-- Header -->
 <?php require_once 'includes/mainheader.php'; ?>
