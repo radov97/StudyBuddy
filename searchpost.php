@@ -27,11 +27,11 @@ foreach ($allPosts as $index => $postinfo) {
         'description' => $postinfo['description'],
         'disabled' => ($postinfo['email'] === $_SESSION['user_logged']['email']) ? 'disabled' : '',
         'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
+        'email' => $postinfo['email'],
     ];        
 }
 
 ?>
-
 <!-- Header -->
 <?php require_once 'includes/mainheader.php'; ?>
 <!-- Style -->
@@ -51,6 +51,36 @@ foreach ($allPosts as $index => $postinfo) {
         });
         $('#scroll-to-top-btn').click(() => {
             $(window).scrollTop(0);
+        });
+
+        $('.user-profile-modal-btn').click(function () {
+            $.ajax({
+                url: 'ajaxcalls.php',
+                type: 'POST',
+                data: {
+                    view_user_profile: true,
+                    email: $(this).data('email'),
+                },
+                success: (response) => {
+                    // Hide Send Email Button for same user
+                    if (true === response.isSameUser) {
+                        $('#user-profile-send-email-btn').attr("disabled", true);
+                    } else {
+                        $('#user-profile-send-email-btn').removeAttr("disabled");
+                    }
+                    // Autofill user profile modal
+                    $('#profile-course-type').html(response.data.course_type);
+                    $('#profile-course-name').html(response.data.course_name);
+                    $('#profile-course-tag').html(response.data.course_tag);
+                    $('#profile-year').html(response.data.academic_year);
+                    $('#profile-description').html(response.data.description);
+                    $('#user-profile-modal').modal('show');
+                },
+                error: (response) => {
+                    alert(response.responseJSON.error);
+                },
+            });
+
         });
     });
 </script>

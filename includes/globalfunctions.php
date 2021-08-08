@@ -76,7 +76,7 @@ function updateUserPersonalData(string $email, string $newParameter, string $par
     return true;
 }
 // Used to return user account details
-function checkUserAccount(string $email): array
+function checkUserAccount(string $email, ?bool $profile = false): array
 {
     global $conn;
     $userData = [];
@@ -93,6 +93,17 @@ function checkUserAccount(string $email): array
     }
     $row = mysqli_fetch_assoc($result);
     mysqli_free_result($result);
+
+    if (true === $profile) {
+        return [
+            'email' => $row['email'],
+            'description' => $row['description'],
+            'course_type' => $row['course_type'],
+            'course_name' => $row['course_name'],
+            'course_tag' => $row['course_tag'],
+            'academic_year' => $row['academic_year'],
+        ];
+    }
 
     return [
         'email' => $row['email'],

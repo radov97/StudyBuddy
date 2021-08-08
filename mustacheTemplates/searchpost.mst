@@ -90,7 +90,10 @@
         <div class="card text-white bg-dark mt-2 mb-2">
             <div class="card-header w-100">
                 <div class="card-header-custom">
-                    <button class="btn btn-lg btn-info shadow-none p-1">
+                    <button
+                        class="btn btn-lg btn-info shadow-none p-1 user-profile-modal-btn"
+                        data-email="{{email}}"
+                    >
                         <i class="bi bi-person-square h1"></i>
                     </button>
                     <h2 class="m-2">{{title}}</h2>
@@ -119,5 +122,52 @@
             </div>
         </div>
         {{/posts}}
+    </div>
+</div>
+<!-- User Profile Modal -->
+<div class="modal fade" id="user-profile-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content user-profile-container">
+            <div class="modal-header user-profile-header">
+                <h5 class="modal-title">User Profile</h5>
+            </div>
+            <div class="modal-body user-profile-body">
+                <div class="user-profile-body-container">
+                    <svg 
+                        id="person-lines-icon" 
+                        class="bi bi-person-lines-fill" 
+                        viewBox="0 0 16 16"
+                    >
+                        <path d="M6 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm-5 6s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H1zM11 3.5a.5.5 0 0 1 .5-.5h4a.5.5 0 0 1 0 1h-4a.5.5 0 0 1-.5-.5zm.5 2.5a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4zm2 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2zm0 3a.5.5 0 0 0 0 1h2a.5.5 0 0 0 0-1h-2z"/>
+                    </svg>
+                    <ul class="list-group list-group-flush w-75 m-3 border border-dark rounded shadow-lg">
+                        <li id="profile-course-type" class="list-group-item list-group-item-warning"></li>
+                        <li id="profile-course-name" class="list-group-item list-group-item-warning"></li>
+                        <li id="profile-course-tag" class="list-group-item list-group-item-warning"></li>
+                        <li id="profile-year" class="list-group-item list-group-item-warning"></li>
+                    </ul>
+                </div>
+                <p class="m-1 p-2 w-100 text-center list-group-item-warning border border-dark rounded shadow-sm">
+                    <em id="profile-description"></em>    
+                </p>
+            </div>
+            <div class="modal-footer user-profile-footer">
+                <div class="user-profile-footer-container">
+                    <button
+                        class="btn btn-outline-light shadow-none" 
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="bi bi-arrow-left-short"></i> Close
+                    </button>
+                    <button 
+                        id="user-profile-send-email-btn"
+                        class="btn btn-warning shadow-none"
+                    >
+                        <i class="bi bi-envelope-open-fill"></i>
+                        Send Email
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

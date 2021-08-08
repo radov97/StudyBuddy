@@ -109,7 +109,7 @@ if (isset($_POST['save_academic_year'])) {
 }
 
 // Set mustache data
-$userData = checkUserAccount($_SESSION['user_logged']['email']);
+$userData = checkUserAccount($_SESSION['user_logged']['email'], true);
 $profileData = [
     'description' => $userData['description'],
     'course_name' => $userData['course_name'],
