@@ -17,20 +17,6 @@ if (isset($_GET['success'])) {
     }
 }
 
-$allPosts = getAllPosts();
-
-foreach ($allPosts as $index => $postinfo) {
-    $postsData['posts'][] = [
-        'date' => date_format(date_create($postinfo['date']), "jS F Y, H:i a"),
-        'module' => !empty($postinfo['module']) ? $postinfo['module'] : 'NO MODULE',
-        'title' => $postinfo['title'],
-        'description' => $postinfo['description'],
-        'disabled' => ($postinfo['email'] === $_SESSION['user_logged']['email']) ? 'disabled' : '',
-        'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
-        'email' => $postinfo['email'],
-    ];        
-}
-
 if (isset($_POST['filters_applied'])) {
     $filters = $_POST;
     foreach ($filters as $key => $filterinfo) {
@@ -40,7 +26,30 @@ if (isset($_POST['filters_applied'])) {
             $filters[$key] = trimInputSides($filters[$key]);
         }
     }
-    debug($filters);
+    if (empty($filters)) {
+        $allPosts = [];
+    } else {
+        $allPosts = getFilteredPosts($filters);
+    }
+} else {
+    $allPosts = getFilteredPosts();
+}
+
+if (empty($allPosts)) {
+    $errorMessage = 'Sorry. There are no posts for this selection. Please try different filters.';
+    $postsData = [];
+} else {
+    foreach ($allPosts as $index => $postinfo) {
+        $postsData['posts'][] = [
+            'date' => date_format(date_create($postinfo['date']), "jS F Y, H:i a"),
+            'module' => !empty($postinfo['module']) ? $postinfo['module'] : 'NO MODULE',
+            'title' => $postinfo['title'],
+            'description' => $postinfo['description'],
+            'disabled' => ($postinfo['email'] === $_SESSION['user_logged']['email']) ? 'disabled' : '',
+            'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
+            'email' => $postinfo['email'],
+        ];        
+    }
 }
 
 ?>

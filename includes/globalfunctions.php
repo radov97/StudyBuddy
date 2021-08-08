@@ -214,26 +214,55 @@ function updatePost(int $id, string $title, string $module, string $description)
 
     return true;
 }
-function getAllPosts(): array
+function getFilteredPosts(?array $filters = []): array
 {
     global $conn;
-    $post = [];
-    $query = "SELECT * FROM posts ORDER BY date DESC";
+    $posts = [];
+    if (!empty($filters)) {
+        $uTable = ['course_type', 'course_name', 'course_tag', 'academic_year'];
+        $pTable = ['title', 'module'];
+        $sqlOperator = '';
+        $iterator = 1;
+        foreach ($filters as $key => $filterinfo) {
+            if (in_array($key, $uTable)) {
+                $sqlOperator .= 'u.'.$key;
+            } else if (in_array($key, $pTable)) {
+                $sqlOperator .= 'p.'.$key;
+            }
+            $safeFilter = dbEscapeString($filterinfo);
+            $sqlOperator .= " LIKE '%{$safeFilter}%' ";
+            if ($iterator === count($filters)) {
+                break;
+            }
+            $sqlOperator .= " OR ";
+            $iterator++;
+        }
+        $query = "SELECT 
+                    p.id, p.title, p.module, p.description,
+                    u.course_type, u.course_name, u.course_tag, u.academic_year, p.email, p.date
+                FROM posts AS p INNER JOIN user_accounts AS u ON p.email = u.email 
+                    WHERE {$sqlOperator}
+                ORDER BY p.date DESC;";
+    } else {
+        $query = "SELECT * FROM posts ORDER BY date DESC";
+    }
+    
     $result = mysqli_query($conn, $query);
     if (!$result) {
 
-        return $post;
+        return $posts;
     }
     if (mysqli_num_rows($result) == 0) {
         mysqli_free_result($result);
 
-        return $post;
+        return $posts;
     }
     while ($row = mysqli_fetch_assoc($result)) {
-        $post[] = $row;
+        $posts[] = $row;
     }
     mysqli_free_result($result);
-    return $post; 
+
+    return $posts; 
 }
 
 // Codebase functions
