@@ -33,10 +33,7 @@ if (isset($_POST['view_user_profile'])) {
     $userData['description'] = empty($userData['description']) ? '&nbsp;' : '&#8220;' . $userData['description'] . '&#8221';
     header('Content-type: application/json');
     http_response_code(200);
-    echo json_encode([
-        'data' => $userData,
-        'isSameUser' => ($userData['email'] === $_SESSION['user_logged']['email']) ? true : false,
-    ]);
+    echo json_encode(['data' => $userData]);
     exit;
 }
 

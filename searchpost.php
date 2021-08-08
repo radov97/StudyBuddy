@@ -37,6 +37,7 @@ if (isset($_POST['filters_applied'])) {
 
 if (empty($allPosts)) {
     $errorMessage = 'Sorry. There are no posts for this selection. Please try different filters.';
+    unset($successMessage);
     $postsData = [];
 } else {
     foreach ($allPosts as $index => $postinfo) {
@@ -45,7 +46,6 @@ if (empty($allPosts)) {
             'module' => !empty($postinfo['module']) ? $postinfo['module'] : 'NO MODULE',
             'title' => $postinfo['title'],
             'description' => $postinfo['description'],
-            'disabled' => ($postinfo['email'] === $_SESSION['user_logged']['email']) ? 'disabled' : '',
             'searchpost_url' => BASE_DOMAIN_URL . 'searchpost.php',
             'email' => $postinfo['email'],
         ];        
@@ -83,12 +83,6 @@ if (empty($allPosts)) {
                     email: $(this).data('email'),
                 },
                 success: (response) => {
-                    // Hide Send Email Button for same user
-                    if (true === response.isSameUser) {
-                        $('#user-profile-send-email-btn').attr("disabled", true);
-                    } else {
-                        $('#user-profile-send-email-btn').removeAttr("disabled");
-                    }
                     // Autofill user profile modal
                     $('#profile-course-type').html(response.data.course_type);
                     $('#profile-course-name').html(response.data.course_name);

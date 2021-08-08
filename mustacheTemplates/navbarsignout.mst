@@ -1,27 +1,29 @@
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container-fluid">
-    <img 
-        src="resources/logo/logo_white_large.png"
-        id="navbar-logo-img"
-        alt="StudBud Logo" 
-    >
-    <div class="d-block mr-0 ml-auto">
-        <a 
-            class="btn btn-info btn-lg shadow-none"
-            type="button"
-            href="{{register_url}}"
+    <div class="navbar-container">
+        <img 
+            src="resources/logo/logo_white_large.png"
+            id="navbar-logo-img"
+            alt="StudBud Logo" 
         >
-            <i class="bi bi-person-plus"></i>
-            Sign in
-        </a>
-        <a 
-            class="btn btn-info btn-lg shadow-none"
-            type="button"
-            href="{{login_url}}"
-        >
-            <i class="bi bi-door-open"></i>
-            Log in
-        </a>
+        <div class="d-block">
+            <a 
+                class="btn btn-info btn-lg shadow-none"
+                type="button"
+                href="{{register_url}}"
+            >
+                <i class="bi bi-person-plus"></i>
+                Sign in
+            </a>
+            <a 
+                class="btn btn-info btn-lg shadow-none"
+                type="button"
+                href="{{login_url}}"
+            >
+                <i class="bi bi-door-open"></i>
+                Log in
+            </a>
+        </div>
     </div>
   </div>
 </nav>
