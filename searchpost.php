@@ -95,7 +95,12 @@ if (empty($allPosts)) {
                     alert(response.responseJSON.error);
                 },
             });
-
         });
+
+        $('.view-user-email-address-btn').click(function () {
+            $('#user-email-clipboard').html($(this).data('email'));
+            $('#user-email-address-modal').modal('show');
+        });
+
     });
 </script>

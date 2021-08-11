@@ -114,7 +114,10 @@
                     <h6 class="text-info">
                         {{date}}
                     </h6>
-                    <button class="btn btn-info btn-lg shadow-none" {{disabled}}>
+                    <button 
+                        class="btn btn-info btn-lg shadow-none view-user-email-address-btn"
+                        data-email="{{email}}"
+                    >
                         <i class="bi bi-envelope-open-fill"></i>
                         View Email
                     </button>
@@ -153,6 +156,35 @@
             </div>
             <div class="modal-footer user-profile-footer">
                 <div class="user-profile-footer-container">
+                    <button
+                        class="btn btn-outline-light shadow-none" 
+                        data-bs-dismiss="modal"
+                    >
+                        <i class="bi bi-arrow-left-short"></i> Close
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- User Email Address Modal -->
+<div class="modal fade" id="user-email-address-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content user-email-container">
+            <div class="modal-header user-email-header">
+                <h5 class="modal-title">Contact User</h5>
+            </div>
+            <div class="modal-body user-email-body">
+            <div class="container text-center">
+            </div>
+                <h5 class="m-1 pb-3 w-100">Contact user at this address:</h5>
+                <p 
+                    id="user-email-clipboard"
+                    class="m-1 p-2 w-100 text-center list-group-item-warning border border-dark rounded shadow-sm h5"
+                ></p>
+            </div>
+            <div class="modal-footer user-email-footer">
+                <div class="user-email-footer-container">
                     <button
                         class="btn btn-outline-light shadow-none" 
                         data-bs-dismiss="modal"
