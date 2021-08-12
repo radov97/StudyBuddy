@@ -3,6 +3,16 @@
         max-height: 10vh;
         height: 100%;
         margin-bottom: 10px;
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: space-between;
+        padding-top: .5rem;
+        padding-bottom: .5rem;
+        flex-wrap: nowrap;
+        justify-content: flex-start;
+        background-color: #212529;
     }
     #navbar-logo-img {
         max-height: 10vh;
@@ -14,5 +24,97 @@
         justify-content: space-between;
         align-items: center;
         width: 100%;
+    }
+    .button-default {
+        cursor: pointer;
+        box-shadow: none !important;
+        padding: .5rem 1rem;
+        font-size: 1.25rem;
+        border-radius: .3rem;
+        display: inline-block;
+        font-weight: 400;
+        line-height: 1.5;
+        color: #212529;
+        text-align: center;
+        text-decoration: none;
+        vertical-align: middle;
+        -webkit-appearance: button;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        user-select: none;
+        background-color: transparent;
+        border: 1px solid transparent;
+        border-top-color: transparent;
+        border-right-color: transparent;
+        border-bottom-color: transparent;
+        border-left-color: transparent;
+        padding: .375rem .75rem;
+        font-size: 1.4rem;
+        border-radius: 1rem;
+        transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    }
+    .button-action {  
+        color: #000;
+        background-color: #0dcaf0 !important;
+        border-color: #0dcaf0 !important; 
+    }
+    .button-exit {  
+        color: #fff;
+        background-color: #dc3545;
+        border-color: #dc3545;
+    }
+    .button-exit:hover {
+        color: #fff;
+        background-color: #bb2d3b;
+        border-color: #b02a37;
+    }
+    .button-action:hover {
+        color: #000;
+        background-color: #31d2f2 !important;
+        border-color: #25cff2 !important;
+    }
+
+    /* Tablets */
+    @media only screen and (max-width: 1024px) {
+        .button-default {
+            font-size: 1rem;
+        }
+        #navbar-logo-img {
+            max-height: 7.5vh;
+        }
+    }
+    /* Smartphones */
+    @media only screen and (max-width: 767px) {
+        .button-default {
+            font-size: .8rem;
+        }
+
+        #navbar-logo-img {
+            display: none;
+        }
+        .navbar-buttons {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: space-evenly;
+            align-items: center;
+            width: 100%;
+        }
+        .navbar-buttons-small {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+        }
+    }
+
+    /* Small - Smartphones */
+    @media only screen and (max-width: 570px) {
+        .button-default {
+            font-size: .7rem;
+            padding: .1rem .25rem;
+        }
     }
 </style>
