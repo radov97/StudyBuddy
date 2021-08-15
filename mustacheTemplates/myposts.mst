@@ -7,7 +7,7 @@
                 <h5 class="card-title">{{module}}</h5>
                 <p class="card-text">{{title}}</p>
                 <a 
-                    class="btn btn-warning w-25 float-end shadow-none"
+                    class="btn btn-warning btn-sm w-25 float-end shadow-none"
                     href={{edit_url}}
                 >
                     <i class="bi bi-pencil"></i> 

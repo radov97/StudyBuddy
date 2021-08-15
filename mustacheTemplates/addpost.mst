@@ -2,8 +2,8 @@
     <div class="row justify-content-center mt-5 mb-5">
         <form class="w-75" method="POST">
             <!-- Post Title -->
+            <label class="text-light">Title</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Title</span>
                 <input 
                     type="text" 
                     class="form-control shadow-none input-form"
@@ -15,18 +15,16 @@
                 >
             </div>
             <!-- Module -->
+            <button
+                type="button"
+                class="btn btn-lg btn-outline-light rounded-circle p-0 mb-1 shadow-none"
+                data-bs-toggle="modal" 
+                data-bs-target="#module-tips"
+            >
+                <i class="bi bi-question-circle"></i>
+            </button>
+            <label class="text-light">Module</label>
             <div class="input-group w-100 shadow">
-                <div class="input-group-text w-25">
-                    <button
-                        type="button"
-                        class="btn btn-lg btn-outline-dark rounded-circle p-0 m-1 shadow-none"
-                        data-bs-toggle="modal" 
-                        data-bs-target="#module-tips"
-                    >
-                        <i class="bi bi-question-circle"></i>
-                    </button>
-                    Module
-                </div>
                 <input
                     id="module-input"
                     type="text" 
@@ -37,8 +35,8 @@
                 >
             </div>
             <!-- Description -->
+            <label class="text-light">Description</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Description</span>
                 <textarea
                     class="form-control shadow-none input-form" 
                     placeholder="Add a short description about your intention for this post"
@@ -50,7 +48,7 @@
             </div>
             <input 
                 type="submit" 
-                class="btn btn-warning btn-lg w-25 float-end"
+                class="btn btn-warning btn-sm w-25 float-end"
                 name="add_post" 
                 value="Add Post"
             >

@@ -2,8 +2,8 @@
     <div class="row justify-content-center mt-5 mb-5">
         <form class="w-75" method="POST">
             <!-- Post Title -->
+            <label class="text-light">Title</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Title</span>
                 <input 
                     type="text" 
                     class="form-control shadow-none input-form"
@@ -16,8 +16,8 @@
                 >
             </div>
             <!-- Module -->
+            <label class="text-light">Module</label>
             <div class="input-group w-100 shadow">
-                <div class="input-group-text w-25">Module</div>
                 <input
                     type="text" 
                     class="form-control shadow-none input-form"
@@ -28,8 +28,8 @@
                 >
             </div>
             <!-- Description -->
+            <label class="text-light">Description</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Description</span>
                 <textarea
                     class="form-control shadow-none input-form" 
                     placeholder="Add a short description about your intention for this post"
@@ -39,25 +39,26 @@
                     required
                 >{{description}}</textarea>
             </div>
-
-            <input 
-                type="submit" 
-                class="btn btn-warning shadow-none btn-lg w-25 float-end"
-                name="update_post"
-                value="Update"
-            >
-            <input 
-                type="submit" 
-                class="btn btn-danger shadow-none btn-lg w-25 float-end"
-                name="delete_post"
-                value="Delete"
-            >
-            <a 
-                class="btn btn-info shadow-none btn-lg w-25 float-start"
-                href={{myprofile_url}}
-            >
-                Back
-            </a>
+            <div class="control-buttons">
+                <a 
+                    class="btn btn-info btn-sm shadow-none btn-lg w-25"
+                    href={{myprofile_url}}
+                >
+                    Back
+                </a>
+                <input 
+                    type="submit" 
+                    class="btn btn-danger btn-sm shadow-none btn-lg w-25"
+                    name="delete_post"
+                    value="Delete"
+                >
+                <input 
+                    type="submit" 
+                    class="btn btn-warning btn-sm shadow-none btn-lg w-25"
+                    name="update_post"
+                    value="Update"
+                >
+            </div>
         </form>
     </div>
 </div>

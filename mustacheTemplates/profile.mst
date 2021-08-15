@@ -1,20 +1,19 @@
 <div class="container">
     <div class="row justify-content-center mt-5 mb-5">
         <div class="input-group w-75 mb-3">
-            <span class="input-group-text w-25">Email Address</span>
-            <input type="text" class="form-control shadow-none" value="<?= $_SESSION['user_logged']['email'] ?>" disabled>
+            <input type="text" class="form-control shadow-none" value="{{email}}" disabled>
             <button 
-                class="input-group-text btn btn-dark shadow-none"
+                class="input-group-text btn btn-lg btn-dark shadow-none"
                 data-bs-toggle="modal" 
                 data-bs-target="#change-password"
             >
-                Change Password
+                <i class="bi bi-shield-lock-fill"></i>
             </button>
         </div>
         <form class="w-75" method="POST">
             <!-- Description -->
+            <label class="text-light">Description</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Description</span>
                 <textarea
                     class="form-control shadow-none input-form" 
                     placeholder="Add a short description about yourself here"
@@ -25,8 +24,8 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_description">Save</button>
             </div>
             <!-- Course Type -->
+            <label class="text-light">Course Type</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Course Type</span>
                     <select id="course-type" name="course_type" class="form-control shadow-none input-form">
                         <option disabled selected>Select your course type</option>
                         <option value="bachelor">Bachelor Degree</option>
@@ -36,8 +35,8 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_type">Save</button>
             </div>
             <!-- Course Name -->
+            <label class="text-light">Course Name</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Course Name</span>
                 <input 
                     type="text" 
                     class="form-control shadow-none input-form"
@@ -49,8 +48,8 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_name">Save</button>
             </div>
             <!-- Course Tag -->
+            <label class="text-light">Course Tag</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Course Tag</span>
                 <input 
                     type="text" 
                     class="form-control shadow-none input-form"
@@ -62,8 +61,8 @@
                 <button class="input-group-text btn btn-warning shadow-none" name="save_course_tag">Save</button>
             </div>
             <!-- Academic Year -->
+            <label class="text-light">Academic Year</label>
             <div class="input-group w-100 shadow">
-                <span class="input-group-text w-25">Academic Year</span>
                 <input 
                     type="number" 
                     class="form-control shadow-none input-form"
@@ -93,16 +92,16 @@
                         <li>May contain any of these characters: !@#$%</li>
                         <li>Must be 8-20 characters</li>
                     </ul>
+                    <label>Old Password</label>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Old Password</span>
                         <input type="password" class="form-control shadow-none input-form" name="old_password" maxlength="20" required>
                     </div>
+                    <label>New Password</label>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">New Password</span>
                         <input type="password" class="form-control shadow-none input-form" name="new_password" maxlength="20" required>
                     </div>
+                    <label>Confirm Password</label>
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Confirm Password</span>
                         <input type="password" class="form-control shadow-none input-form" name="confirm_password" maxlength="20" required>
                     </div>
                 </div>

@@ -2,13 +2,13 @@
     <div class="btn-group w-100 border border-2 border-dark shadow">
         <button 
             id="scroll-to-top-btn"
-            class="btn btn-lg btn-danger p-1 w-25 shadow-none"
+            class="btn btn-sm btn-lg btn-danger p-1 w-25 shadow-none"
         >
             <i class="bi bi-file-arrow-up-fill h2"></i>
         </button>
         <button
             id="filters-btn"
-            class="btn btn-lg btn-info w-50 shadow-none"
+            class="btn btn-sm btn-lg btn-info w-50 shadow-none"
         >
             <div class="filtern-btn-content">
                 <div class="mb-0 h5"><i class="bi bi-funnel-fill"> Filters</i></div>
@@ -16,14 +16,14 @@
             </div>
         </button>
         <a 
-            class="btn btn-warning w-25 shadow-none"
+            class="btn btn-sm btn-warning w-25 shadow-none"
             href="{{searchpost_url}}"
         >
             <i class="bi bi-trash2-fill h4 mb-0"> Reset</i>
         </a>
     </div>
     <div id="filters-container-id" class="filters-container">
-        <form class="w-50 mb-0" method="POST">
+        <form class="w-75 mb-0" method="POST">
             <!-- Course Type -->
             <label class="mb-2">Course Type</label>
             <select id="course-type" name="course_type" class="form-control shadow-none input-form">
@@ -78,7 +78,7 @@
                 placeholder="e.g. biology help"
                 maxlength="50"
             >
-            <button class="btn btn-warning w-100 mt-2" name="filters_applied">
+            <button class="btn btn-sm btn-warning w-100 mt-2 shadow-none" name="filters_applied">
                 Apply Filters and Search Posts
             </button>
         </form>
@@ -115,7 +115,7 @@
                         {{date}}
                     </h6>
                     <button 
-                        class="btn btn-info btn-lg shadow-none view-user-email-address-btn"
+                        class="btn btn-sm btn-info btn-lg shadow-none view-user-email-address-btn"
                         data-email="{{email}}"
                     >
                         <i class="bi bi-envelope-open-fill"></i>
