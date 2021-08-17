@@ -8,7 +8,7 @@
         >
         <div class="navbar-buttons">
             <a 
-                class="button-default button-action"
+                class="button-default button-action selected-button"
                 href="{{searchpost_url}}"
             >
                 <i class="bi bi-search"></i>

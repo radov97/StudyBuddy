@@ -10,6 +10,7 @@
                         style="background-color: #3b5998;"
                         href="#!"
                         role="button"
+                        target=”_blank”
                     >
                         <i class="bi bi-facebook"></i>
                     </a>
@@ -19,6 +20,7 @@
                         style="background-color: #55acee;"
                         href="#!"
                         role="button"
+                        target=”_blank”
                     >
                         <i class="bi bi-twitter"></i>
                     </a>
@@ -28,6 +30,7 @@
                         style="background-color: #ac2bac;"
                         href="#!"
                         role="button"
+                        target=”_blank”
                     >
                         <i class="bi bi-instagram"></i>
                     </a>
@@ -37,6 +40,7 @@
                         style="background-color: #0082ca;"
                         href="#!"
                         role="button"
+                        target=”_blank”
                     >
                         <i class="bi bi-linkedin"></i>
                     </a>
@@ -59,4 +63,8 @@
         let audio = new Audio('<?= isset($soundSrc) ? $soundSrc : '' ?>');
         audio.play();
     }
+    // 
+    $('.button-action').click(function () {
+        $(".button-action").removeClass("selected-button");
+    });
 </script>
