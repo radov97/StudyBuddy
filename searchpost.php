@@ -98,7 +98,14 @@ if (empty($allPosts)) {
         });
 
         $('.view-user-email-address-btn').click(function () {
-            $('#user-email-clipboard').html($(this).data('email'));
+            let userEmail = $(this).data('email');
+            let emailDomain = userEmail.split("@").pop();
+            let emailAlertHtml = '';
+            if (emailDomain !== 'liverpool.ac.uk') {
+                emailAlertHtml = "<p class='alert alert-danger' role='alert'>This user might not be a University of Liverpool student.<br>Make sure you do not share too much information.</p>";  
+            } 
+            $('#alert-user').html(emailAlertHtml);
+            $('#user-email-clipboard').html(userEmail);
             $('#user-email-address-modal').modal('show');
         });
 

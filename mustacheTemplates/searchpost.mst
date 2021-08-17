@@ -177,6 +177,7 @@
             <div class="modal-body user-email-body">
             <div class="container text-center">
             </div>
+                <div id="alert-user"></div>
                 <h5 class="m-1 pb-3 w-100">Contact user at this address:</h5>
                 <p 
                     id="user-email-clipboard"
