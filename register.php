@@ -37,7 +37,9 @@ if (isset($_POST['register_user'])) {
             break;
         }
         $passcode = generateRandomString();
-        if (!registerUser($safeEmail, $safePassword, $passcode)) {
+        // Store this into DB as a password substitute
+        $hashAndSalt = password_hash($safePassword, PASSWORD_DEFAULT);
+        if (!registerUser($safeEmail, $hashAndSalt, $passcode)) {
             $errorMessage = 'Something went wrong. Could not create your account.';
             unset($successMessage);
             break;
