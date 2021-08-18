@@ -63,8 +63,4 @@
         let audio = new Audio('<?= isset($soundSrc) ? $soundSrc : '' ?>');
         audio.play();
     }
-    // 
-    $('.button-action').click(function () {
-        $(".button-action").removeClass("selected-button");
-    });
 </script>

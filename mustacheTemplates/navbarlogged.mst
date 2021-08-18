@@ -1,14 +1,17 @@
 <nav>
   <div class="container-fluid">
     <div class="navbar-container">
-        <img
-        src="resources/logo/logo_white_large.png"
-        id="navbar-logo-img"
-        alt="StudBud Logo"
-        >
+        <div class="logo-container">
+            <img
+                src="resources/logo/logo_small_icon_only.png"
+                alt="Books Image"
+                id="navbar-logo-img"
+            >
+            <h1 class="text-light">LivBud</h1>
+        </div>
         <div class="navbar-buttons">
             <a 
-                class="button-default button-action selected-button"
+                class="button-default button-action"
                 href="{{searchpost_url}}"
             >
                 <i class="bi bi-search"></i>

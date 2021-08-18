@@ -15,7 +15,7 @@
         background-color: #212529;
     }
     #navbar-logo-img {
-        max-height: 10vh;
+        max-height: 8vh;
     }
     .navbar-container {
         display: flex;
@@ -73,15 +73,13 @@
         background-color: #31d2f2b2;
         border-color: #25cff2;
     }
-    .selected-button {
-        color: #fff !important;
-        background-color: #0e2fb3 !important;
-        border-color: #0335fcc5 !important;
-    }
-    .selected-button:hover {
-        color: rgba(255, 255, 255, 0.788) !important;
-        background-color: #0e2fb3a1 !important;
-        border-color: #0335fcc5 !important;
+    .logo-container {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        justify-content: space-evenly;
+        align-items: center;
+        width: 20%;
     }
     /* Tablets */
     @media only screen and (max-width: 1024px) {
@@ -98,7 +96,7 @@
             font-size: .8rem;
         }
 
-        #navbar-logo-img {
+        #navbar-logo-img, .logo-container {
             display: none;
         }
         .navbar-buttons {
