@@ -8,7 +8,7 @@ $profile = getTemplate('mustacheTemplates/profile.mst');
 // Change password
 if (isset($_POST['change_password'])) {
     do {
-        // Check if user already exists
+        // Check if user exists
         $isUserValid = checkUserAccount($_SESSION['user_logged']['email']);
         // Invalid user
         if (empty($isUserValid)) {
@@ -16,15 +16,9 @@ if (isset($_POST['change_password'])) {
             unset($successMessage);
             break;
         }
-        // Old password doesn't match
-        if ($isUserValid['password'] !== $_POST['old_password']) {
+        //  Wrong password
+        if (!password_verify($_POST['old_password'], $isUserValid['password'])) {
             $errorMessage = 'The old password does not match. Please try again.';
-            unset($successMessage);
-            break;
-        }
-        // Same password as the old one
-        if ($isUserValid['password'] === $_POST['new_password']) {
-            $errorMessage = 'Please enter a different new password.';
             unset($successMessage);
             break;
         }
@@ -41,7 +35,9 @@ if (isset($_POST['change_password'])) {
             break;
         }
         // Update password
-        if (!updateUserPersonalData($_SESSION['user_logged']['email'], $_POST['new_password'], 'password')) {
+        // Store this into DB as a password substitute
+        $hashAndSalt = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
+        if (!updateUserPersonalData($_SESSION['user_logged']['email'], $hashAndSalt, 'password')) {
             $errorMessage = 'Something went wrong. Please try again later.';
             unset($successMessage);
             break;
