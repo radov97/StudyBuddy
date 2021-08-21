@@ -54,15 +54,15 @@ if (isset($_POST['login_user'])) {
             unset($successMessage);
             break;
         }
-        //  Wrong password
-        if ($isUserValid['password'] !== $safePassword) {
-            $errorMessage = 'Wrong password.';
-            unset($successMessage);
-            break;
-        }
         // Account not verified yet
         if ($isUserValid['verified'] === 'n') {
             $errorMessage = 'This account must be verified. Please check your email.';
+            unset($successMessage);
+            break;
+        }
+        //  Wrong password
+        if (!password_verify($safePassword, $isUserValid['password'])) {
+            $errorMessage = 'Wrong password.';
             unset($successMessage);
             break;
         }
@@ -79,9 +79,7 @@ if (isset($_POST['email'])) {
 }
 // Set mustache data
 $loginData = [
-    'email' => $fillEmail,
-    'forgot_password' => BASE_DOMAIN_URL . 'forgotpassword.php',
-    'activation_link' => BASE_DOMAIN_URL . 'activation.php',
+    'login_url' => $fillEmail,
 ];
 ?>
 

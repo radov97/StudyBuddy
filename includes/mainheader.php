@@ -47,7 +47,7 @@ if (isset($errorMessage)) {
         <meta name="description" content="Web-Based Platform Project for COMP702">
         <meta name="keywords" content="COMP702,StudyBuddy">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <title>StudBud Pairing</title>
+        <title>LivBud Pairing</title>
         <!-- Website Favicon -->
         <link rel="icon" type="image/png" href="resources/logo/logo_small_icon_only.png">
         <!-- Bootstrap 5 -->

@@ -12,13 +12,13 @@ if (isset($_POST['resend_password'])) {
             unset($successMessage);
             break;
         }
-        $message = 'Your password is: ' . $isUserValid['password'];
-        if (!mail($safeEmail, 'Forgotten Password', $message, 'From: ' . BASE_DOMAIN_EMAIL)) {
+        $resetPassUrl = BASE_DOMAIN_URL . 'resetpassword.php?email=' . $safeEmail . '&passcode=' . $isUserValid['url_passcode'];
+        if (!mail($safeEmail, 'Reset Password', $resetPassUrl, 'From: ' . BASE_DOMAIN_EMAIL)) {
             $errorMessage = 'Something went wrong. Could not send your password. Please try again later.';
             unset($successMessage);
             break;
         }
-        $successMessage = 'An email containing your password has been successfully sent.';
+        $successMessage = 'An email containing a reset link has been successfully sent.';
         unset($errorMessage);
     } while(0);
 }
