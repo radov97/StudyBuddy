@@ -234,7 +234,7 @@ function getFilteredPosts(?array $filters = []): array
             if ($iterator === count($filters)) {
                 break;
             }
-            $sqlOperator .= " OR ";
+            $sqlOperator .= " AND ";
             $iterator++;
         }
         $query = "SELECT 
