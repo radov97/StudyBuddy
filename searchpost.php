@@ -102,7 +102,7 @@ if (empty($allPosts)) {
             let emailDomain = userEmail.split("@").pop();
             let emailAlertHtml = '';
             if (emailDomain !== 'liverpool.ac.uk') {
-                emailAlertHtml = "<p class='alert alert-danger' role='alert'>This user might not be a University of Liverpool student.<br>Make sure you do not share too much information.</p>";  
+                emailAlertHtml = "<p class='alert alert-danger' role='alert'>This user might not be a University of Liverpool student.</p>";  
             } 
             $('#alert-user').html(emailAlertHtml);
             $('#user-email-clipboard').html(userEmail);
